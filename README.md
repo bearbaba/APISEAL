@@ -25,7 +25,7 @@ Decision scopes: COMPATIBLE can be authorized; BREAKING and REVIEW_REQUIRED cann
 
 One JSON object with exactly these keys: api, version, operations. Each operation must define id, method, path, success_status, request and response. Fields in request/response must define name, type, required (boolean), meaning (6–180 chars).
 
-See [versioned contract fixtures](examples/api_contracts.json) and [signed Studio walkthrough](docs/STUDIO_ACCEPTANCE.md) for complete objects. This deliberately constrained declarative format makes compatibility rules inspectable and limits unbounded AI interpretation.
+See [versioned contract fixtures](examples/api_contracts.json) for complete objects. This deliberately constrained declarative format makes compatibility rules inspectable and limits unbounded AI interpretation.
 
 ## Expected cases
 
@@ -37,14 +37,13 @@ See [versioned contract fixtures](examples/api_contracts.json) and [signed Studi
 | Units change from USD cents to whole USD | BREAKING, if consensus agrees | Semantic consensus |
 | Insufficiently documented semantic change | REVIEW_REQUIRED, if consensus agrees | Semantic consensus |
 
-The semantic outputs above are **acceptance targets**, not claimed GenLayer Studio results.
+The semantic outputs above are illustrative expectations, not observed on-chain results.
 
 ## Code and tests
 
 - [Standalone Intelligent Contract](contracts/apiseal.py)
 - [12 mocked-VM contract tests](tests/test_apiseal.py), including validator disagreement, roles, duplicates, changes in units, structural breaks, replay and revocation
 - [CI](https://github.com/bearbaba/APISEAL/actions/workflows/tests.yml)
-- [GenLayer Studio acceptance](docs/STUDIO_ACCEPTANCE.md)
 
 Local unit tests: python -m unittest discover -s tests -v
 
