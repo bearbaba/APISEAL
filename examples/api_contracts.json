@@ -1,0 +1,86 @@
+{
+  "baseline": {
+    "api": "Payments",
+    "version": "1.0",
+    "operations": [
+      {
+        "id": "get_balance",
+        "method": "GET",
+        "path": "/balance",
+        "success_status": 200,
+        "request": [],
+        "response": [
+          {
+            "name": "amount",
+            "type": "number",
+            "required": true,
+            "meaning": "Account balance expressed in USD cents"
+          }
+        ]
+      }
+    ]
+  },
+  "compatible_revision": {
+    "api": "Payments",
+    "version": "2.0",
+    "operations": [
+      {
+        "id": "get_balance",
+        "method": "GET",
+        "path": "/balance",
+        "success_status": 200,
+        "request": [],
+        "response": [
+          {
+            "name": "amount",
+            "type": "number",
+            "required": true,
+            "meaning": "Account balance expressed in USD cents"
+          },
+          {
+            "name": "memo",
+            "type": "string",
+            "required": false,
+            "meaning": "Optional balance display memo"
+          }
+        ]
+      }
+    ]
+  },
+  "unit_shift_revision": {
+    "api": "Payments",
+    "version": "2.1",
+    "operations": [
+      {
+        "id": "get_balance",
+        "method": "GET",
+        "path": "/balance",
+        "success_status": 200,
+        "request": [],
+        "response": [
+          {
+            "name": "amount",
+            "type": "number",
+            "required": true,
+            "meaning": "Account balance expressed in whole USD, not cents"
+          }
+        ]
+      }
+    ]
+  },
+  "removed_required_field_revision": {
+    "api": "Payments",
+    "version": "3.0",
+    "operations": [
+      {
+        "id": "get_balance",
+        "method": "GET",
+        "path": "/balance",
+        "success_status": 200,
+        "request": [],
+        "response": []
+      }
+    ]
+  },
+  "note": "Use the serialized JSON string for each named object when calling register_baseline/propose_revision. These cases are not on-chain results."
+}
